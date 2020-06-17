@@ -2,7 +2,6 @@ package com.ozixue.controller;
 
 import com.ozixue.entity.Payment;
 import com.ozixue.vo.JsonResult;
-import io.swagger.annotations.Api;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,7 +14,7 @@ import javax.annotation.Resource;
 @RestController
 public class OrderController {
 
-    public static final String PAYMENT_URL = "http://localhost:8001";
+    public static final String PAYMENT_URL = "http://cloud-payment-provider-service";
 
     @Resource
     private RestTemplate restTemplate;

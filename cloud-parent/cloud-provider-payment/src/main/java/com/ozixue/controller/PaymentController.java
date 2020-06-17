@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.List;
+import java.util.Random;
 
 @Slf4j
 @RestController
@@ -44,6 +45,8 @@ public class PaymentController {
 
     @GetMapping("/find/{id}")
     public JsonResult<Payment> findPaymentById(@PathVariable Long id) {
+        // 模拟超时
+        timeout();
         Payment payment = paymentService.selectPaymentById(id);
         if (StringUtils.isEmpty(payment))
             return new JsonResult<>(200, "没有这个信息,port: " + port, null);
@@ -61,5 +64,18 @@ public class PaymentController {
             log.debug(instance.getServiceId() + "\t" + instance.getHost() + "\t" + instance.getPort() + "\t" + instance.getUri());
         });
         return this.discoveryClient;
+    }
+
+    // 模拟超时
+    private void timeout() {
+        long t = new Random().nextInt(5000);
+        if (Math.random() < 0.6) {
+            log.debug("cloud-payment-provider-service-{}- 暂停:{}", port, t);
+            try {
+                Thread.sleep(t);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
     }
 }

@@ -1,6 +1,3 @@
-server:
-  port: 8001
-
 spring:
   application:
     name: cloud-payment-provider-service
@@ -21,4 +18,16 @@ eureka:
     register-with-eureka: true
     fetch-registry: true
     service-url:
-      defaultZone: http://eureka:7001/eureka
+      defaultZone: http://eureka1:7001/eureka,http://eureka2:7002/eureka
+
+---
+server:
+  port: 8001
+spring:
+  profiles: payment1
+
+---
+server:
+  port: 8002
+spring:
+  profiles: payment2

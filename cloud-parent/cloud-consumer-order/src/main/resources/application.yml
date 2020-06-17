@@ -18,3 +18,9 @@ ribbon:
   ReadTimeout: 2000
   # 建立连接后从服务器读取到可用资源所用的时间: 2000(2秒)
   ConnectTimeout: 2000
+
+# Feign 日志监控
+logging:
+  level:
+    # 以书面级别监控哪个接口
+    com.ozixue.service: debug

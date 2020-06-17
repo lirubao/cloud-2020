@@ -13,7 +13,6 @@ import javax.annotation.Resource;
 
 @Slf4j
 @RestController
-@Api(value = "order 消费者",tags = "restTemplate")
 public class OrderController {
 
     public static final String PAYMENT_URL = "http://localhost:8001";

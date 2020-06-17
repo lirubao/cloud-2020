@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.*;
 @Slf4j
 @RestController
 @RequestMapping("/payment")
-@Api(value = "provider 提供者" ,tags = "Payment")
 public class PaymentController {
 
     @Autowired

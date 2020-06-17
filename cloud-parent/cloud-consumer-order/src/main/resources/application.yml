@@ -4,10 +4,6 @@ server:
 spring:
   application:
     name: cloud-order-consumer-service
-
-eureka:
-  client:
-    register-with-eureka: true
-    fetch-registry: true
-    service-url:
-      defaultZone: http://eureka:7001/eureka
+  cloud:
+    zookeeper:
+      connect-string: 172.16.133.132:2181,172.16.133.132:2182,172.16.133.132:2183

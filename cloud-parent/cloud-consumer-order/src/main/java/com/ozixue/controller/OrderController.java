@@ -16,7 +16,7 @@ import javax.annotation.Resource;
 @Api(value = "order 消费者",tags = "restTemplate")
 public class OrderController {
 
-    public static final String PAYMENT_URL = "http://localhost:8001";
+    public static final String PAYMENT_URL = "http://cloud-payment-provider-service";
 
     @Resource
     private RestTemplate restTemplate;

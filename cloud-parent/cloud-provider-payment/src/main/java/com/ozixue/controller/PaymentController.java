@@ -7,8 +7,13 @@ import io.swagger.annotations.Api;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.client.ServiceInstance;
+import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
+
+import javax.annotation.Resource;
+import java.util.List;
 
 @Slf4j
 @RestController
@@ -22,13 +27,17 @@ public class PaymentController {
     @Value("${server.port}")
     private String port;
 
+    // 通过服务发现来获得该服务的信息
+    @Resource
+    private DiscoveryClient discoveryClient;
+
     @PostMapping("/create")
     public JsonResult<Payment> create(@RequestBody Payment payment) {
         int result = paymentService.create(payment);
-        log.info("***********插入成功: {}", result);
+        log.debug("***********插入成功: {}", result);
         if (result > 0)
             return new JsonResult<>(200, "插入成功,port: " + port);
-        log.info("***********插入失败: {}", result);
+        log.debug("***********插入失败: {}", result);
         return null;
     }
 
@@ -39,5 +48,18 @@ public class PaymentController {
         if (StringUtils.isEmpty(payment))
             return new JsonResult<>(200, "没有这个信息,port: " + port, null);
         return new JsonResult<>(200, "查询成功,port: " + port, payment);
+    }
+
+    @GetMapping("/discovery")
+    public Object discovery() {
+        List<String> services = discoveryClient.getServices();
+        services.forEach(element -> {
+            log.debug("*********** element: {}", element);
+        });
+        List<ServiceInstance> instances = discoveryClient.getInstances("cloud-payment-provider-service");
+        instances.forEach(instance -> {
+            log.debug(instance.getServiceId() + "\t" + instance.getHost() + "\t" + instance.getPort() + "\t" + instance.getUri());
+        });
+        return this.discoveryClient;
     }
 }

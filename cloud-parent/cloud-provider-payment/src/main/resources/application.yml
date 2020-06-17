@@ -12,7 +12,6 @@ mybatis-plus:
   mapper-locations: classpath:mappers/*.xml
   configuration:
     map-underscore-to-camel-case: true
-
 eureka:
   client:
     register-with-eureka: true
@@ -20,6 +19,9 @@ eureka:
     service-url:
       defaultZone: http://eureka1:7001/eureka,http://eureka2:7002/eureka
 
+logging:
+  level:
+    com.ozixue: debug
 ---
 server:
   port: 8001

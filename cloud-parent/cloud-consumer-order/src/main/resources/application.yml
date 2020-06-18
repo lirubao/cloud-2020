@@ -24,3 +24,7 @@ logging:
   level:
     # 以书面级别监控哪个接口
     com.ozixue.service: debug
+
+feign:
+  hystrix:
+    enabled: true

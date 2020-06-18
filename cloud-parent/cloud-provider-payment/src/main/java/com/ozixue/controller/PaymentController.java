@@ -19,7 +19,6 @@ import java.util.Random;
 @Slf4j
 @RestController
 @RequestMapping("/payment")
-@Api(value = "provider 提供者", tags = "Payment")
 public class PaymentController {
 
     @Autowired

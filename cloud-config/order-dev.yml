@@ -3,7 +3,7 @@ server:
 
 # 测试bus+rabbitmq
 config:
-  info: 'test'
+  info: 'update test'
 
 spring:
   application:

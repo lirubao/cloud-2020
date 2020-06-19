@@ -5,6 +5,8 @@ spring:
   application:
     name: cloud-gateway
   cloud:
+    config:
+      override-none: true
     gateway:
       discovery:
         locator:

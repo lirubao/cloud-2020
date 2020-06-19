@@ -7,8 +7,19 @@ spring:
       name: order  #配置文件名称
       profile: dev  #读取后缀名称
       uri: http://localhost:3344  #配置中心地址
+  rabbitmq:
+    host: 172.16.133.132
+    port: 5672
+    username: guest
+    password: guest
 
 eureka:
   client:
     service-url:
       defaultZone: http://eureka1:7001/eureka,http://eureka2:7002/eureka
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'

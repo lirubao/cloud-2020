@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: cloud-gateway
+  cloud:
+    config:
+      label: OpenFeign #分支名称
+      name: gateway  #配置文件名称
+      profile: dev  #读取后缀名称
+      uri: http://localhost:3344  #配置中心地址
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka1:7001/eureka,http://eureka2:7002/eureka

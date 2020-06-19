@@ -12,6 +12,7 @@
         <module>cloud-provider-payment</module>
         <module>cloud-consumer-order</module>
         <module>cloud-eureka-server</module>
+        <module>cloud-hystrix-dashboard</module>
     </modules>
     <packaging>pom</packaging>
     <!-- swagger-ui.html 访问地址-->

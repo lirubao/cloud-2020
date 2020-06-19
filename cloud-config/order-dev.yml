@@ -1,6 +1,10 @@
 server:
   port: 8101
 
+# 测试bus+rabbitmq
+config:
+  info: 'test'
+
 spring:
   application:
     name: cloud-order-consumer-service
